@@ -2,8 +2,13 @@ const express = require('express');
 const cors = require('cors');
 const authRoutes = require('./routes/auth');
 const transactionRoutes = require('./routes/transactions');
-
 const app = express();
+app.use(cors({
+  origin: 'http://localhost:3000', // frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+}));
+
 const ocrRoutes = require('./routes/ocr');
 app.use('/api/ocr', ocrRoutes);
 

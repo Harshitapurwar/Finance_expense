@@ -1,7 +1,10 @@
+
 const express = require('express');
 const multer = require('multer');
 const pdfParse = require('pdf-parse');
+const fs = require('fs');
 const auth = require('../middleware/authMiddleware');
+const Transaction = require('../models/Transaction');
 
 const router = express.Router();
 const upload = multer({ dest: 'uploads/' });
@@ -9,14 +12,49 @@ const upload = multer({ dest: 'uploads/' });
 router.post('/upload', auth, upload.single('pdf'), async (req, res) => {
   try {
     const dataBuffer = fs.readFileSync(req.file.path);
-    const data = await pdfParse(dataBuffer);
+    const pdfData = await pdfParse(dataBuffer);
+    const text = pdfData.text;
 
-    const lines = data.text.split('\n');
-    const transactions = lines.filter(l => l.match(/\d{2}\/\d{2}\/\d{4}/)); // crude filter
+    const lines = text.split('\n').map(line => line.trim()).filter(Boolean);
+    const userId = req.user.userId;
+    const transactions = [];
 
-    res.json({ raw: data.text, transactions });
+    const dateRegex = /(\d{2})\/(\d{2})\/(\d{4})/;
+
+    // Parse lines like: "2024/07/01 Grocery Store 123.45"
+    for (const line of lines) {
+      const match = line.match(/^(.+?)\s+(\d{1,5}\.\d{2})$/);
+      if (match) {
+        const [_, description, amount] = match;
+
+        const dateLine = lines.find(l => dateRegex.test(l));
+        const dateMatch = dateLine?.match(dateRegex);
+        const formattedDate = dateMatch ? `${dateMatch[3]}-${dateMatch[1]}-${dateMatch[2]}` : new Date().toISOString();
+
+        transactions.push({
+          user: userId,
+          description: description.trim(),
+          amount: parseFloat(amount),
+          date: new Date(formattedDate),
+          type: 'expense',
+          category: 'Auto PDF'
+        });
+        console.log("transactions:",transactions.amount);
+      }
+    }
+
+    if (transactions.length > 0) {
+      await Transaction.insertMany(transactions);
+    }
+
+    res.json({
+      message: 'PDF parsed and transactions saved',
+      extractedCount: transactions.length,
+      transactions
+    });
   } catch (err) {
-    res.status(500).json({ error: 'PDF parse failed' });
+    console.error('PDF Parse error:', err);
+    res.status(500).json({ error: 'Failed to process PDF' });
   }
 });
 
