@@ -16,20 +16,45 @@ router.post('/', async (req, res) => {
   await transaction.save();
   res.status(201).json(transaction);
 });
+
+// routes/transactions.js
 router.get('/', authMiddleware, async (req, res) => {
-  const { startDate, endDate } = req.query;
+  const { startDate, endDate, page = 1, limit = 10 } = req.query;
   const filter = { user: req.user.id };
 
   if (startDate && endDate) {
     filter.date = {
       $gte: new Date(startDate),
-      $lte: new Date(endDate)
+      $lte: new Date(endDate),
     };
   }
 
-  const transactions = await Transaction.find(filter).sort({ date: -1 });
-  res.json(transactions);
+  const skip = (parseInt(page) - 1) * parseInt(limit);
+  const totalCount = await Transaction.countDocuments(filter);
+  const totalPages = Math.ceil(totalCount / parseInt(limit));
+
+  const transactions = await Transaction.find(filter)
+    .sort({ date: -1 })
+    .skip(skip)
+    .limit(parseInt(limit));
+
+  res.json({ transactions, totalPages });
 });
+
+// router.get('/', authMiddleware, async (req, res) => {
+//   const { startDate, endDate } = req.query;
+//   const filter = { user: req.user.id };
+
+//   if (startDate && endDate) {
+//     filter.date = {
+//       $gte: new Date(startDate),
+//       $lte: new Date(endDate)
+//     };
+//   }
+
+//   const transactions = await Transaction.find(filter).sort({ date: -1 });
+//   res.json(transactions);
+// });
 
 
 // Delete transaction

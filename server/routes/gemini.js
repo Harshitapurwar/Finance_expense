@@ -116,7 +116,6 @@ router.post("/api/upload-gemini-pdf", upload.single("file"), async (req, res) =>
     } catch (err) {
       return res.status(400).json({ error: "Failed to parse Gemini response" });
     }
-
     fs.unlinkSync(file.path); // clean up
     res.json(parsed);
   } catch (err) {
