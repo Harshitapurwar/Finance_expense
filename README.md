@@ -59,7 +59,7 @@ personal-finance/
 ### 1️⃣ Clone the repository
 
 ```bash
-git clone hhttps://github.com/Harshitapurwar/Finance_expense.git
+git clone https://github.com/Harshitapurwar/Finance_expense.git
 cd personal-finance
 ````
 
@@ -98,6 +98,9 @@ GEMINI_API_KEY=your_gemini_api_key
 ```
 
 ---
+
+
+📽️ [Watch Demo](https://drive.google.com/file/d/19zWS0XLCqWm-wpPZJB8mIcT-FEh0-F1x/view?usp=sharing)
 
 ## 🖼️ Screenshots
 <img width="2151" height="1147" alt="image" src="https://github.com/user-attachments/assets/257338b1-7e10-4c6e-b408-1899c3980ede" />
