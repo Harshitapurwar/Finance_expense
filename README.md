@@ -1,7 +1,7 @@
 
 # 💰 Personal Finance Tracker
 
-A modern, full-stack web application to track your income and expenses, visualize data with charts, and upload receipts or bank statements for automatic transaction extraction using OCR and AI. Built using the MERN stack + Tailwind CSS + AI integrations like Gemini and OCR.space.
+A modern, full-stack web application to track your income and expenses, visualize data with charts, and upload receipts or bank statements for automatic transaction extraction using OCR and AI. Built using the MERN stack +  CSS + AI integrations like Gemini Vision.
 
 ---
 
@@ -10,7 +10,7 @@ A modern, full-stack web application to track your income and expenses, visualiz
 - ✅ Add, update, delete transactions (income/expense)
 - 📊 Filter by date, category, and visualize with dynamic charts
 - 🧾 Upload image/PDF receipts to extract transaction data (amount, date, description)
-- 🧠 Gemini Vision AI & OCR.space integration for smart receipt parsing
+- 🧠 Gemini Vision AI  for smart receipt parsing
 - 🔐 JWT-based authentication
 - 👥 Multi-user support
 - 📅 Monthly totals + categorized expenses
@@ -22,7 +22,7 @@ A modern, full-stack web application to track your income and expenses, visualiz
 
 **Frontend**:
 - ⚛️ React.js
-- 💨 Tailwind CSS
+- 💨 CSS
 - 📦 Axios
 - 📈 Recharts
 - 🔐 JWT Auth (client-side)
@@ -33,7 +33,6 @@ A modern, full-stack web application to track your income and expenses, visualiz
 - 🍃 MongoDB with Mongoose
 - 🔐 JWT Auth (server-side)
 - 🧠 Google Gemini Vision API
-- 🧾 OCR.space API for text extraction from receipts
 
 ---
 
@@ -60,7 +59,7 @@ personal-finance/
 ### 1️⃣ Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/personal-finance.git
+git clone hhttps://github.com/Harshitapurwar/Finance_expense.git
 cd personal-finance
 ````
 
@@ -70,7 +69,7 @@ cd personal-finance
 cd server
 npm install
 # Add your `.env` with MongoDB URI, JWT_SECRET, Gemini & OCR API keys
-npm start
+node server.js
 ```
 
 > Server runs on `http://localhost:5000`
@@ -95,15 +94,18 @@ Create a `.env` file inside the `server/` directory:
 PORT=5000
 MONGODB_URI=mongodb+srv://<your-mongodb-uri>
 JWT_SECRET=your_jwt_secret
-OCR_SPACE_API_KEY=your_ocr_space_api_key
 GEMINI_API_KEY=your_gemini_api_key
 ```
 
 ---
 
 ## 🖼️ Screenshots
+<img width="2151" height="1147" alt="image" src="https://github.com/user-attachments/assets/257338b1-7e10-4c6e-b408-1899c3980ede" />
+<img width="2092" height="1125" alt="image" src="https://github.com/user-attachments/assets/bc99e3bd-eef9-48a0-a12d-d0e11e117219" />
+<img width="2141" height="1147" alt="image" src="https://github.com/user-attachments/assets/bfad4b99-8be7-47fe-92b0-05a355c01897" />
+<img width="2153" height="1175" alt="image" src="https://github.com/user-attachments/assets/943558a2-5999-437e-98df-f5cff32d45c0" />
+<img width="2111" height="1178" alt="image" src="https://github.com/user-attachments/assets/1e47a3fe-828a-47f2-8b30-d9c3537a2b7e" />
 
-Coming soon... 📷
 
 ---
 
@@ -112,17 +114,15 @@ Coming soon... 📷
 | Method | Endpoint               | Description                   |
 | ------ | ---------------------- | ----------------------------- |
 | POST   | `/api/transactions`    | Add a new transaction         |
-| GET    | `/api/transactions`    | List all transactions         |
+| GET    | `/api/transactionList` | List all transactions         |
 | POST   | `/api/upload`          | Upload image/PDF (Gemini OCR) |
-| POST   | `/api/upload-ocrspace` | Upload receipt to OCR.space   |
-| POST   | `/api/auth/register`   | Register user                 |
-| POST   | `/api/auth/login`      | Login user                    |
+| POST   | `/api/auth`            | Register user                 |
+| POST   | `/api/auth/logout`     | Logout user                   |
 
 ---
 
 ## 🧠 AI Integrations
 
-* 🔍 **OCR.space API** — for extracting text from printed receipts (images/PDFs)
 * 🤖 **Gemini Vision AI** — for intelligent extraction of transaction info from images (like POS receipts)
 
 ---
@@ -150,13 +150,13 @@ MIT License © 2025 Harshita Purwar
 
 ## 🌐 Live Demo (Optional)
 
-> Add link here if deployed on Vercel/Render/Netlify
+Updated soon...
 
 ---
 
 ## 🧑‍💻 Author
 
-Made with ❤️ by [Harshita Purwar](https://github.com/<your-github-username>)
+Made with ❤️ by [Harshita Purwar](https://github.com/Harshitapurwar)
 
 ```
 
