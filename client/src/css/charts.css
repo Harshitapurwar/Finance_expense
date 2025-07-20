@@ -1,0 +1,108 @@
+.dashboard-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 10px 18px;
+  font-size: 16px;
+  font-weight: bold;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.3s ease;
+}
+
+.dashboard-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.top-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.top-btn {
+  background-color: #ffffff;
+  color: #000;
+  padding: 10px 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.top-btn:hover {
+  background-color: #f0f0f0;
+}
+.charts-container {
+  background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+  /* min-height: auto; */
+  padding: 2rem;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  
+}
+
+.chart-filter {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center; /* ✅ This centers the content horizontally */
+}
+
+
+.chart-filter label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.chart-filter input {
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  margin-top: 4px;
+  background: #e2e8f0;
+  color: black;
+}
+
+.chart-filter button {
+  padding: 8px 16px;
+  background-color: #4facfe;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1.3rem;
+}
+
+.chart-box {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 16px;
+  margin: 2rem auto; /* ⬅ centers the box horizontally */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  width: 60%;
+}
+
+.chart-box h3 {
+  color: white;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  border-bottom: 2px solid #fff;
+  padding-bottom: 0.5rem;
+}
+.chart-box:last-child {
+  margin-bottom: 4rem;
+}
+
