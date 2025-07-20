@@ -8,9 +8,11 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 }));
-
+const uploadGemini = require('./routes/gemini');
+app.use(uploadGemini);
+// app.use('/api', uploadGemini);
 const ocrRoutes = require('./routes/ocr');
-app.use('/api/ocr', ocrRoutes);
+app.use('/api', ocrRoutes);
 
 const pdfRoutes = require('./routes/pdf');
 app.use('/api/pdf', pdfRoutes);
